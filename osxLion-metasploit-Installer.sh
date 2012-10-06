@@ -34,6 +34,47 @@ function exit_status
         fi
 }
 
+function xcode_error
+{
+        pkgutil --pkgs | grep Xcode; export OUT=$?
+        if [ $OUT -eq 0 ]; then
+	echo ""
+	echo "[OK] Xcode seems to be installed. Press 0 to continue."
+        else
+	echo ""
+        echo "[ERROR] Are you missing Xcode? Install this prior to running this script, please."
+	exit
+        fi
+}
+
+function xcode_clt_error
+{
+        pkgutil --pkgs | grep DeveloperToolsCLI ; export OUT=$?
+        if [ $OUT -eq 0 ]; then
+	echo ""
+	echo "[OK] Xcode Command Line Tools seems to be installed. Press 0 to continue."
+        else
+	echo ""
+        echo "[ERROR] Are you missing Xcode's Command Line Tools? Install this prior to running this script, please."
+	exit
+        fi
+}
+
+}
+function java_error
+{
+        pkgutil --pkgs | grep JavaFor; export OUT=$?
+        if [ $OUT -eq 0 ]; then
+	echo ""
+	echo "[OK] Xcode seems to be installed. Press 0 to continue."
+        else
+	echo ""
+        echo "[ERROR] Are you missing Xcode and/or command line tools? Install these prior to running this script, please."
+	exit
+        fi
+}
+
+
 echo ""
 echo ""
 echo "--------------------------------------------------------------------------"
@@ -44,6 +85,16 @@ echo ""
 
 press_enter;
 clear
+
+echo ""
+echo "Checking for Xcode..."
+echo ""
+xcode_error;
+
+echo ""
+echo "Checking for Xcode Command Line Tools..."
+echo ""
+xcode_clt_error;
 
 echo ""
 echo "[STEP 1 of 12]"
@@ -60,7 +111,7 @@ echo -n "Enter your selection:  "
 echo ""
 read selection
 case $selection in
-		1 ) java ; exit_status ;;
+		1 ) java_error ;;
 	esac
 done
 
