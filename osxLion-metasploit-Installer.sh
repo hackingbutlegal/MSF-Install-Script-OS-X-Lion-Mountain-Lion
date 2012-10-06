@@ -227,6 +227,7 @@ echo ""
 echo "[INFO] You are running GCC Version $GCC_VER"
 echo ""
 
+echo "[STEP 6a]"
 echo "Now setting environment variables for color and compilation flags..."
 press_enter;
 echo ""
@@ -291,6 +292,7 @@ echo "[INFO] You are running $POSTGRES_VER"
 
 echo ""
 echo "--------------------------------------------------------------------------"
+echo "[STEP 8a]"
 echo "First-time database initialization"
 echo ""
 echo "Enter 0 to skip doing this and continue."
@@ -308,6 +310,7 @@ done
 
 echo ""
 echo "--------------------------------------------------------------------------"
+echo "[STEP 8b]"
 echo "Modifying configuration to ask Postgres to load on login"
 echo ""
 echo "Enter 0 to skip doing this and continue."
@@ -327,6 +330,7 @@ done
 
 echo ""
 echo "--------------------------------------------------------------------------"
+echo "[STEP 8c]"
 echo "Creating new database user named msf"
 echo ""
 echo "Enter 0 to skip doing this and continue."
@@ -343,6 +347,7 @@ case $selection3 in
 done
 
 echo ""
+echo "[STEP 8d]"
 echo "--------------------------------------------------------------------------"
 echo "Creating database for use with Metasploit"
 echo ""
