@@ -4,9 +4,9 @@
 #
 # Copyright (C) 2012 Jackie Singh - All Rights Reserved
 # Permission to copy and modify is granted under the foo license
-# Last revised 10/5/2012
+# Last revised 10/6/2012
 #
-# Please update the database password below on line 371 prior to running this script.
+# Please update the database password below on line 427 prior to running this script.
 # Additionally, your machine must have a route to the internet as a prerequisite to running this script.
 # If you experience difficulties, you may create a log file by running this script like this: ./script.sh 2>&1 | tee script.log
 #
