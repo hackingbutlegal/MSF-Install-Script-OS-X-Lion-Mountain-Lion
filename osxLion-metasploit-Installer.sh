@@ -60,7 +60,6 @@ function xcode_clt_error
         fi
 }
 
-}
 function java_error
 {
         pkgutil --pkgs | grep JavaFor; export OUT=$?
