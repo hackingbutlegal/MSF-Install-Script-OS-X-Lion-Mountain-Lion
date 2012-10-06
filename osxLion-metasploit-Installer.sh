@@ -39,10 +39,10 @@ function xcode_error
         pkgutil --pkgs | grep Xcode; export OUT=$?
         if [ $OUT -eq 0 ]; then
 	echo ""
-	echo "[OK] Xcode seems to be installed. Press 0 to continue."
+	echo "[OK] Xcode seems to be installed. Continuing..."
         else
 	echo ""
-        echo "[ERROR] Are you missing Xcode? Install this prior to running this script, please."
+        echo "[ERROR] Are you missing Xcode? Install it prior to running this script, please."
 	echo ""
 	exit
         fi
@@ -53,10 +53,10 @@ function xcode_clt_error
         pkgutil --pkgs | grep DeveloperToolsCLI ; export OUT=$?
         if [ $OUT -eq 0 ]; then
 	echo ""
-	echo "[OK] Xcode Command Line Tools seems to be installed. Press 0 to continue."
+	echo "[OK] Xcode Command Line Tools seems to be installed. Continuing..."
         else
 	echo ""
-        echo "[ERROR] Are you missing Xcode's Command Line Tools? Install this prior to running this script, please."
+        echo "[ERROR] Are you missing Xcode's Command Line Tools? Install this package prior to running this script, please."
 	echo ""
 	exit
         fi
@@ -67,7 +67,7 @@ function java_error
         pkgutil --pkgs | grep JavaFor; export OUT=$?
         if [ $OUT -eq 0 ]; then
 	echo ""
-	echo "[OK] Xcode seems to be installed. Press 0 to continue."
+	echo "[OK] Xcode seems to be installed. Continuing..."
         else
 	echo ""
         echo "[ERROR] Are you missing Xcode and/or command line tools? Install these prior to running this script, please."
