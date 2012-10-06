@@ -29,7 +29,7 @@ function exit_status
         else
 	echo ""
 	echo ""
-        echo "[ERROR] Something may have gone wrong with that last thing we did. Check log for details."
+        echo "[ERROR] Something may have gone wrong with that last thing we did. Press 0 to continue or CTRL + C to exit."
 		echo ""
         fi
 }
@@ -270,38 +270,76 @@ done
 POSTGRES_VER=`postgres -V`
 echo ""
 echo "[INFO] You are running $POSTGRES_VER"
-echo ""
+
 
 echo ""
-echo "First time database initialization..."
-press_enter;
+echo "--------------------------------------------------------------------------"
+echo "First-time database initialization"
 echo ""
-initdb /usr/local/var/postgres
-echo "Done."
+echo "Enter 0 to skip doing this and continue."
+echo "Enter 1 to initialize the database for the first time."
+echo "--------------------------------------------------------------------------"
+echo ""
+selection1=
+until [ "$selection1" = "0" ]; do
+echo -n ""
+read selection1
+case $selection1 in
+                1 ) initdb /usr/local/var/postgres ; exit_status ;;
+        esac
+done
 
 echo ""
-echo "Asking Postgres to load on login..." 
-echo "If this errors out for any reason, check homebrew output after postgres install for proper instructions."
-press_enter;
+echo "--------------------------------------------------------------------------"
+echo "Modifying configuration to ask Postgres to load on login"
 echo ""
-mkdir -p ~/Library/LaunchAgents
-cp /usr/local/Cellar/postgresql/9.2.1/homebrew.mxcl.postgresql.plist ~/Library/LaunchAgents/
-launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
-echo "Done."
+echo "Enter 0 to skip doing this and continue."
+echo "Enter 1 to ask Postgres to load on login."
+echo "--------------------------------------------------------------------------"
+echo -n ""
+until [ "$selection2" = "0" ]; do
+echo ""
+read selection2
+case $selection2 in
+                1 ) mkdir -p ~/Library/LaunchAgents ;
+		      cp /usr/local/Cellar/postgresql/9.2.1/homebrew.mxcl.postgresql.plist ~/Library/LaunchAgents/ ;
+		      launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist ;
+		      exit_status ;;
+        esac
+done
 
 echo ""
-echo "Creating user for use with Metasploit... You need to set the same password here as you set in this script before you ran it :-)"
-press_enter
+echo "--------------------------------------------------------------------------"
+echo "Creating new database user named msf"
 echo ""
-createuser msf -P -h localhost
-echo "Done."
+echo "Enter 0 to skip doing this and continue."
+echo "Enter 1 to create msf user."
+echo "Set the same password here as you set in the script before you ran it."
+echo "--------------------------------------------------------------------------"
+echo -n ""
+until [ "$selection3" = "0" ]; do
+echo ""
+read selection3
+case $selection3 in
+                1 ) createuser msf -P -h localhost ; exit_status ;;
+        esac
+done
 
 echo ""
-echo "Creating database for use with Metasploit and setting user msf as the owner..."
-press_enter
+echo "--------------------------------------------------------------------------"
+echo "Creating database for use with Metasploit"
 echo ""
-createdb -O msf msf -h localhost
-echo "Done."
+echo "Enter 0 to skip doing this and continue."
+echo "Enter 1 to set up database for use with MSF and set new user msf as owner."
+echo "--------------------------------------------------------------------------"
+echo ""
+until [ "$selection3" = "0" ]; do
+echo -n ""
+read selection3
+case $selection3 in
+                1 ) createdb -O msf msf -h localhost ; exit_status ;;
+        esac
+done
 
 echo ""
 echo "--------------------------------------------------------------------------"
@@ -310,7 +348,7 @@ echo ""
 echo "Install needed Ruby gems for MSF"
 echo ""
 echo "Enter 0 to skip this step and continue to the next."
-echo "Enter 1 to install the needed gems, including sqlite3."
+echo "Enter 1 to install needed gems, including sqlite3. Need sudo access here."
 echo "--------------------------------------------------------------------------"
 selection=
 until [ "$selection" = "0" ]; do
@@ -319,7 +357,7 @@ echo -n "Enter your selection:  "
 echo ""
 read selection
 case $selection in
-                1 ) gem install pg sqlite3 msgpack hpricot ; exit_status ;;
+                1 ) gem install pg; exit_status ; sudo gem install sqlite3; exit_status ; gem install msgpack; exit_status ; gem install hpricot ; exit_status ;;
         esac
 done
 
