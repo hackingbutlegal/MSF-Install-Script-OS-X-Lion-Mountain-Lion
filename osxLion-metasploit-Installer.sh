@@ -67,10 +67,10 @@ function java_error
         pkgutil --pkgs | grep JavaFor; export OUT=$?
         if [ $OUT -eq 0 ]; then
 	echo ""
-	echo "[OK] Xcode seems to be installed. Continuing..."
+	echo "[OK] Java seems to be installed. Continuing..."
         else
 	echo ""
-        echo "[ERROR] Are you missing Xcode and/or command line tools? Install these prior to running this script, please."
+        echo "[ERROR] Are you missing Java? Install it prior to running this script, please."
 	echo ""
 	exit
         fi
@@ -86,7 +86,12 @@ echo "(Ctrl + C to exit at any time)"
 echo ""
 
 press_enter;
-clear
+
+echo ""
+echo "[STEP 1 of 12]"
+echo "--------------------------------------------------------------------------"
+echo "Checking for Prerequisites"
+echo "--------------------------------------------------------------------------"
 
 echo ""
 echo "Checking for Xcode..."
@@ -99,31 +104,15 @@ echo ""
 xcode_clt_error;
 
 echo ""
-echo "[STEP 1 of 12]"
-echo "Check for Java/Install"
+echo "Checking for Java..."
 echo ""
-echo "--------------------------------------------------------------------------"
-echo "Enter 0 to skip this step and continue to the next."
-echo "Enter 1 to test for Java's presence on your machine/install if necessary."
-echo "--------------------------------------------------------------------------"
-selection=
-until [ "$selection" = "0" ]; do
-echo ""
-echo -n "Enter your selection:  "
-echo ""
-read selection
-case $selection in
-		1 ) java_error ;;
-	esac
-done
-
-clear
+java_error;
 
 echo ""
+echo "--------------------------------------------------------------------------"
 echo "[STEP 2 of 12]"
 echo "Install Homebrew"
 echo ""
-echo "--------------------------------------------------------------------------"
 echo "Enter 0 to skip this step and continue to the next."
 echo "Enter 1 to install homebrew."
 echo "--------------------------------------------------------------------------"
@@ -138,13 +127,11 @@ case $selection in
         esac
 done
 
-clear
-
 echo ""
+echo "--------------------------------------------------------------------------"
 echo "[STEP 3 of 12]"
 echo "Updating paths for homebrew binaries"
 echo ""
-echo "--------------------------------------------------------------------------"
 echo "Enter 0 to skip this step and continue to the next."
 echo "Enter 1 to add /usr/local/bin and /usr/local/sbin to your .bash_profile."
 echo "--------------------------------------------------------------------------"
@@ -159,13 +146,11 @@ case $selection in
         esac
 done
 
-clear
-
 echo ""
+echo "--------------------------------------------------------------------------"
 echo "[STEP 4 of 12]"
 echo "Install nmap"
 echo ""
-echo "--------------------------------------------------------------------------"
 echo "Enter 0 to skip this step and continue to the next."
 echo "Enter 1 to install nmap using homebrew."
 echo "--------------------------------------------------------------------------"
@@ -180,13 +165,11 @@ case $selection in
         esac
 done
 
-clear
-
 echo ""
+echo "--------------------------------------------------------------------------"
 echo "[STEP 5 of 12]"
 echo "Update Homebrew"
 echo ""
-echo "--------------------------------------------------------------------------"
 echo "Enter 0 to skip this step and continue to the next."
 echo "Enter 1 to update the formula and homebrew."
 echo "--------------------------------------------------------------------------"
@@ -201,13 +184,11 @@ case $selection in
         esac
 done
 
-clear
-
 echo ""
+echo "--------------------------------------------------------------------------"
 echo "[STEP 6 of 12]"
 echo "Install GNU GCC"
 echo ""
-echo "--------------------------------------------------------------------------"
 echo "Enter 0 to skip this step and continue to the next."
 echo "Enter 1 to install GNU GCC 4.2 after compiling from source." 
 echo "This may take an hour or more depending on your processor."
@@ -223,8 +204,7 @@ case $selection in
         esac
 done
 
-clear
-
+echo ""
 GCC_VER=`gcc -dumpversion`
 echo ""
 echo "[INFO] You are running GCC Version $GCC_VER"
@@ -241,14 +221,12 @@ echo export CC=/usr/local/bin/gcc-4.2 >> ~/.bash_profile
 source ~/.bash_profile
 echo "Done."
 
-clear
-
 echo ""
+echo "--------------------------------------------------------------------------"
 echo "[STEP 7 of 12]"
 echo ""
 echo "Install Ruby"
 echo ""
-echo "--------------------------------------------------------------------------"
 echo "Enter 0 to skip this step and continue to the next."
 echo "Enter 1 to install Ruby."
 echo "--------------------------------------------------------------------------"
@@ -263,18 +241,18 @@ case $selection in
         esac
 done
 
-clear
-
+echo ""
 RUBY_VER=`ruby -v`
 echo ""
 echo "[INFO] You are running $RUBY_VER"
 echo ""
 
+echo ""
+echo "--------------------------------------------------------------------------"
 echo "[STEP 8 of 12]"
 echo ""
 echo "Install PostgreSQL"
 echo ""
-echo "--------------------------------------------------------------------------"
 echo "Enter 0 to skip this step and continue to the next."
 echo "Enter 1 to install PostgreSQL."
 echo "--------------------------------------------------------------------------"
@@ -288,8 +266,6 @@ case $selection in
                 1 ) brew install postgresql --without-ossp-uuid ; exit_status ;;
         esac
 done
-
-clear
 
 POSTGRES_VER=`postgres -V`
 echo ""
@@ -327,14 +303,12 @@ echo ""
 createdb -O msf msf -h localhost
 echo "Done."
 
-clear
-
 echo ""
+echo "--------------------------------------------------------------------------"
 echo "[STEP 9 of 12]"
 echo ""
 echo "Install needed Ruby gems for MSF"
 echo ""
-echo "--------------------------------------------------------------------------"
 echo "Enter 0 to skip this step and continue to the next."
 echo "Enter 1 to install the needed gems, including sqlite3."
 echo "--------------------------------------------------------------------------"
@@ -349,8 +323,6 @@ case $selection in
         esac
 done
 
-clear
-
 echo ""
 echo "Updating some things related to vncviewer..."
 press_enter
@@ -361,11 +333,11 @@ chmod +x /usr/local/bin/vncviewer
 echo "Done."
 
 echo ""
+echo "--------------------------------------------------------------------------"
 echo "[STEP 10 of 12]"
 echo ""
 echo "Get MSF using Subversion"
 echo ""
-echo "--------------------------------------------------------------------------"
 echo "Enter 0 to skip this step and continue to the next."
 echo "Enter 1 to check out MSF. This may take a while... Please be patient."
 echo "--------------------------------------------------------------------------"
@@ -380,13 +352,12 @@ case $selection in
         esac
 done
 
-clear
-
+echo ""
+echo "--------------------------------------------------------------------------"
 echo "[STEP 11 of 12]"
 echo ""
 echo "Symlinking some stuff..."
 echo ""
-echo "--------------------------------------------------------------------------"
 echo "Enter 0 to skip this step and continue to the next."
 echo "Enter 1 to complete needed symlinks for MSF's proper operation."
 echo "--------------------------------------------------------------------------"
@@ -400,8 +371,6 @@ case $selection in
                 1 ) cd /usr/local/share/metasploit-framework; for MSF in $(ls msf*); do ln -s /usr/local/share/metasploit-framework/$MSF /usr/local/bin/$MSF; done ; exit_status ;;
         esac
 done
-
-clear
 
 echo ""
 echo "Symlinking Armitage…"
@@ -439,11 +408,11 @@ source ~/.bash_profile
 echo "Done."
 
 echo ""
+echo "--------------------------------------------------------------------------"
 echo "[STEP 12 of 12]"
 echo ""
 echo "Installing pcaprub library"
 echo ""
-echo "--------------------------------------------------------------------------"
 echo "Enter 0 to skip this step and continue to the next."
 echo "Enter 1 to install the pcaprub library for modules used to craft packets."
 echo "--------------------------------------------------------------------------"
@@ -457,8 +426,6 @@ case $selection in
                 1 ) cd /usr/local/share/metasploit-framework/external/pcaprub ; ruby extconf.rb && make && make install ; exit_status ;;
         esac
 done
-
-clear
 
 echo ""
 echo "The installation is presumably finished."
