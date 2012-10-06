@@ -43,6 +43,7 @@ function xcode_error
         else
 	echo ""
         echo "[ERROR] Are you missing Xcode? Install this prior to running this script, please."
+	echo ""
 	exit
         fi
 }
@@ -56,6 +57,7 @@ function xcode_clt_error
         else
 	echo ""
         echo "[ERROR] Are you missing Xcode's Command Line Tools? Install this prior to running this script, please."
+	echo ""
 	exit
         fi
 }
@@ -69,6 +71,7 @@ function java_error
         else
 	echo ""
         echo "[ERROR] Are you missing Xcode and/or command line tools? Install these prior to running this script, please."
+	echo ""
 	exit
         fi
 }
