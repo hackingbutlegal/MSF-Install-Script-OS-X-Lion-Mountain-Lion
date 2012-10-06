@@ -19,17 +19,34 @@ function press_enter
 	read -p "Press [Return] to continue"
 }
 
-function exit_status
+function exit_status_cont
 {
         export OUT=$?
         if [ $OUT -eq 0 ]; then
 	echo ""
 	echo ""
 	echo "[OK] That seems to have gone well. Press 0 to continue."
+	echo ""
         else
 	echo ""
 	echo ""
         echo "[ERROR] Something may have gone wrong with that last thing we did. Press 0 to continue or CTRL + C to exit."
+		echo ""
+        fi
+}
+
+function exit_status
+{
+        export OUT=$?
+        if [ $OUT -eq 0 ]; then
+	echo ""
+	echo ""
+	echo "[OK] That seems to have gone well. Moving along."
+	echo ""
+        else
+	echo ""
+	echo ""
+        echo "[ERROR] Something may have gone wrong with that last thing we did. You may wish to exit."
 		echo ""
         fi
 }
@@ -285,7 +302,7 @@ until [ "$selection1" = "0" ]; do
 echo -n ""
 read selection1
 case $selection1 in
-                1 ) initdb /usr/local/var/postgres ; exit_status ;;
+                1 ) initdb /usr/local/var/postgres ; exit_status_cont ;;
         esac
 done
 
@@ -304,7 +321,7 @@ case $selection2 in
                 1 ) mkdir -p ~/Library/LaunchAgents ;
 		      cp /usr/local/Cellar/postgresql/9.2.1/homebrew.mxcl.postgresql.plist ~/Library/LaunchAgents/ ;
 		      launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist ;
-		      exit_status ;;
+		      exit_status_cont ;;
         esac
 done
 
@@ -321,7 +338,7 @@ until [ "$selection3" = "0" ]; do
 echo ""
 read selection3
 case $selection3 in
-                1 ) createuser msf -P -h localhost ; exit_status ;;
+                1 ) createuser msf -P -h localhost ; exit_status_cont ;;
         esac
 done
 
@@ -337,7 +354,7 @@ until [ "$selection3" = "0" ]; do
 echo -n ""
 read selection3
 case $selection3 in
-                1 ) createdb -O msf msf -h localhost ; exit_status ;;
+                1 ) createdb -O msf msf -h localhost ; exit_status_cont ;;
         esac
 done
 
