@@ -362,7 +362,7 @@ case $selection in
 done
 
 echo ""
-echo "Updating some things related to vncviewer..."
+echo "Updating some configs related to vncviewer..."
 press_enter
 echo ""
 echo '#!/usr/bin/env bash'  >> /usr/local/bin/vncviewer 
