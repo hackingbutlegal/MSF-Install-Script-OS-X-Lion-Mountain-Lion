@@ -238,6 +238,11 @@ done
 
 clear
 
+POSTGRES_VER=`postgres -V`
+echo ""
+echo "[INFO] You are running $POSTGRES_VER"
+echo ""
+
 echo ""
 echo "First time database initialization..."
 press_enter;
