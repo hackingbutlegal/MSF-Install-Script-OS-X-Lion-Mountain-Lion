@@ -6,7 +6,7 @@
 # Permission to copy and modify is granted under the foo license
 # Last revised 10/6/2012
 #
-# Please update the database password below on line 458 prior to running this script.
+# Please update the database password below on line 427 prior to running this script.
 # Additionally, your machine must have a route to the internet as a prerequisite to running this script.
 # If you experience difficulties, you may create a log file by running this script like this: ./script.sh 2>&1 | tee script.log
 #
@@ -408,7 +408,7 @@ echo -n "Enter your selection:  "
 echo ""
 read selection
 case $selection in
-                1 ) cd /usr/local/share/; svn --trust-server-cert --non-interactive co https://www.metasploit.com/svn/framework3/trunk metasploit-framework; exit_status ;;
+                1 ) cd /usr/local/share/; svn --trust-server-cert --non-interactive co https://www.metasploit.com/svn/framework3/trunk metasploit-framework; exit_status_cont ;;
         esac
 done
 
@@ -428,12 +428,12 @@ echo -n "Enter your selection:  "
 echo ""
 read selection
 case $selection in
-                1 ) cd /usr/local/share/metasploit-framework; for MSF in $(ls msf*); do ln -s /usr/local/share/metasploit-framework/$MSF /usr/local/bin/$MSF; done ; exit_status ;;
+                1 ) cd /usr/local/share/metasploit-framework; for MSF in $(ls msf*); do ln -s /usr/local/share/metasploit-framework/$MSF /usr/local/bin/$MSF; done ; exit_status_cont ;;
         esac
 done
 
 echo ""
-echo "Symlinking Armitage…"
+echo "Making some symlinks for the proper operation of Armitage..."
 press_enter;
 echo ""
 ln -s /usr/local/share/metasploit-framework/armitage /usr/local/bin/armitage
@@ -483,7 +483,7 @@ echo -n "Enter your selection:  "
 echo ""
 read selection
 case $selection in
-                1 ) cd /usr/local/share/metasploit-framework/external/pcaprub ; ruby extconf.rb && make && make install ; exit_status ;;
+                1 ) cd /usr/local/share/metasploit-framework/external/pcaprub ; ruby extconf.rb && make && make install ; exit_status_cont ;;
         esac
 done
 
