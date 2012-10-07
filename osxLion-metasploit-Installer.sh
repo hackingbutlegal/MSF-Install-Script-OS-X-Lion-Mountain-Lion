@@ -140,7 +140,7 @@ echo -n "Enter your selection:  "
 echo ""
 read selection
 case $selection in
-                1 ) ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)" ; exit_status ;;
+                1 ) ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)" ; exit_status_cont ;;
         esac
 done
 
@@ -159,7 +159,7 @@ echo -n "Enter your selection:  "
 echo ""
 read selection
 case $selection in
-                1 ) echo PATH=/usr/local/bin:/usr/local/sbin:$PATH >> ~/.bash_profile ; exit_status ;;
+                1 ) echo PATH=/usr/local/bin:/usr/local/sbin:$PATH >> ~/.bash_profile ; exit_status_cont ;;
         esac
 done
 
@@ -178,7 +178,7 @@ echo -n "Enter your selection:  "
 echo ""
 read selection
 case $selection in
-                1 ) brew install nmap ; exit_status ;;
+                1 ) brew install nmap ; exit_status_cont ;;
         esac
 done
 
@@ -197,7 +197,7 @@ echo -n "Enter your selection:  "
 echo ""
 read selection
 case $selection in
-                1 ) brew update ; exit_status ;;
+                1 ) brew update ; exit_status_cont ;;
         esac
 done
 
@@ -217,11 +217,10 @@ echo -n "Enter your selection:  "
 echo ""
 read selection
 case $selection in
-                1 ) brew tap homebrew/dupes; brew install apple-gcc42 ; exit_status ;;
+                1 ) brew tap homebrew/dupes; brew install apple-gcc42 ; exit_status_cont ;;
         esac
 done
 
-echo ""
 GCC_VER=`gcc -dumpversion`
 echo ""
 echo "[INFO] You are running GCC Version $GCC_VER"
