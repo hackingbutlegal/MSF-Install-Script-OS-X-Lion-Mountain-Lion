@@ -6,6 +6,7 @@
 # Permission to copy and modify is granted under the WTFPL license (http://sam.zoy.org/wtfpl/)
 # Last revised 10/6/2012
 #
+# You should run through each step sequentially.
 # Please update the database password below on line 458 prior to running this script.
 # Additionally, your machine must have a route to the internet as a prerequisite to running this script.
 # If you experience difficulties, you may create a log file by running this script like this: ./script.sh 2>&1 | tee script.log
@@ -254,7 +255,7 @@ echo -n "Enter your selection:  "
 echo ""
 read selection
 case $selection in
-                1 ) brew install ruby ; exit_status ;;
+                1 ) brew install ruby ; exit_status_cont ;;
         esac
 done
 
@@ -280,7 +281,7 @@ echo -n "Enter your selection:  "
 echo ""
 read selection
 case $selection in
-                1 ) brew install postgresql --without-ossp-uuid ; exit_status ;;
+                1 ) brew install postgresql --without-ossp-uuid ; exit_status_cont ;;
         esac
 done
 
@@ -378,7 +379,7 @@ echo -n "Enter your selection:  "
 echo ""
 read selection
 case $selection in
-                1 ) gem install pg; exit_status ; sudo gem install sqlite3; exit_status ; gem install msgpack; exit_status ; gem install hpricot ; exit_status ;;
+                1 ) gem install pg; exit_status ; sudo gem install sqlite3; exit_status ; gem install msgpack; exit_status ; gem install hpricot ; exit_status_cont ;;
         esac
 done
 
