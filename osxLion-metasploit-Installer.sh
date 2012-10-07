@@ -2,8 +2,8 @@
 #
 # Script to automate the installation of Metasploit Framework (MSF) on OS X Lion and Mountain Lion.
 #
-# Copyright (C) 2012 Jackie Singh - All Rights Reserved
-# Permission to copy and modify is granted under the foo license
+# Copyright (C) 2012 Jackie Singh jackie@jackiesingh.com
+# Permission to copy and modify is granted under the WTFPL license (http://sam.zoy.org/wtfpl/)
 # Last revised 10/6/2012
 #
 # Please update the database password below on line 458 prior to running this script.
@@ -488,8 +488,9 @@ case $selection in
 done
 
 echo ""
-echo "The installation is presumably finished."
+echo "The installation is presumably finished!"
 echo "To use Armitage and other modules in Metasploit, you will need to use root. The next time you launch the application, try:"
+echo ""
 echo "------------------"
 echo "sudo -E armitage"
 echo "or"
@@ -498,6 +499,9 @@ echo "------------------"
 echo ""
 echo "Now attempting to start msfconsole as your current user for first time to initialize schema with current user and not root."
 echo ""
+echo "[NOTE] A reboot is suggested."
+echo ""
+
 press_enter
 
 msfconsole
