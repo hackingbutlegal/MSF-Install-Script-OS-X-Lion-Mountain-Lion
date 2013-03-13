@@ -3,7 +3,7 @@
 # Script to automate the installation of Metasploit Framework (MSF) on OS X Lion and Mountain Lion.
 #
 # Jackie Singh, 2012 (jackie@jackiesingh.com)
-# Permission to copy and modify is granted under the WTFPL license (http://sam.zoy.org/wtfpl/)
+# Permission to copy and modify is granted under the WTFPL license (http://www.wtfpl.net/about/)
 # Last revised 10/6/2012
 #
 # You should run through each step sequentially.
