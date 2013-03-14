@@ -2,7 +2,7 @@
 # 
 # Based on instructions from http://www.darkoperator.com/installing-metasploit-framewor (C) 2011 Carlos Perez, with modifications by Jackie Singh.
 # 
-# Permission to copy and modify is granted under the WTFPL license http://sam.zoy.org/wtfpl/
+# Permission to copy and modify is granted under the WTFPL license (http://www.wtfpl.net/about/)
 # Last revised 10/6/2012
 #
 # Please update the intended database password on line 458 prior to running this script.
