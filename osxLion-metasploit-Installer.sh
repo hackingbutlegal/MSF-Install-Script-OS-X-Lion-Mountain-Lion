@@ -11,7 +11,7 @@
 # running this script. If you experience difficulties, you may create a log file by running this script like 
 # this: ./script.sh 2>&1 | tee script.log
 #
-# Make sure to set a DB password on line 451 first.
+# Make sure to set a DB password on line 443 first.
 #
 
 clear 
@@ -459,7 +459,7 @@ echo "Installing pcaprub library"
 echo ""
 echo "Enter 0 to skip this step and continue to the next."
 echo ""
-echo "Enter 1 to install the pcaprub library for modules used to craft packets.  
+echo "Enter 1 to install the pcaprub library for modules used to craft packets."  
 echo "[NOTE] Warnings shouldn't be a big deal here. Safe to ignore."
 echo ""
 echo "--------------------------------------------------------------------------"
