@@ -246,7 +246,7 @@ echo ""
 echo ""
 read selection
 case $selection in
-                1 ) brew install deadline openssl rbenv ruby-build ; export CC=clang ; export RUBY_CONFIGURE_OPTS="--with-openssl-dir=`brew --prefix openssl` --with-readline-dir=`brew --prefix readline`" ; rbenv install 2.0.0-p0 ; rbenv rehash ; rbenv global 2.0.0-p0 ; exit_status_cont ;;
+                1 ) brew install readline openssl rbenv ruby-build ; export CC=clang ; export RUBY_CONFIGURE_OPTS="--with-openssl-dir=`brew --prefix openssl` --with-readline-dir=`brew --prefix readline`" ; rbenv install 2.0.0-p0 ; rbenv rehash ; rbenv global 2.0.0-p0 ; exit_status_cont ;;
         esac
 done
 
