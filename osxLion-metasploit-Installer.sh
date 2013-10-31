@@ -68,7 +68,7 @@ function xcode_error
 
 function xcode_clt_error
 {
-        pkgutil --pkgs | grep DeveloperToolsCLI ; export OUT=$?
+        pkgutil --pkgs | grep CLTools ; export OUT=$?
         if [ $OUT -eq 0 ]; then
 	echo ""
 	echo "[OK] Xcode Command Line Tools seems to be installed. Continuing..."
