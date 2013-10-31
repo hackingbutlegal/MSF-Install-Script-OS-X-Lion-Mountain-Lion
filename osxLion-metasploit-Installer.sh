@@ -61,6 +61,7 @@ function xcode_error
         else
 	echo ""
         echo "[ERROR] Are you missing Xcode? Install it prior to running this script, please."
+	echo "XCode can be installed from the MAS https://itunes.apple.com/us/app/xcode/id497799835"
 	echo ""
 	exit
         fi
@@ -75,6 +76,7 @@ function xcode_clt_error
         else
 	echo ""
         echo "[ERROR] Are you missing Xcode's Command Line Tools? Install this package prior to running this script, please."
+	echo "You can use xcode-select --install to install xcode CLT.  If that fails, download from the developer site"
 	echo ""
 	exit
         fi
