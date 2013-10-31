@@ -82,7 +82,7 @@ function xcode_clt_error
 
 function java_error
 {
-        pkgutil --pkgs | grep JavaFor; export OUT=$?
+        pkgutil --pkgs | grep JavaTool; export OUT=$?
         if [ $OUT -eq 0 ]; then
 	echo ""
 	echo "[OK] Java seems to be installed. Continuing..."
