@@ -429,6 +429,7 @@ echo ""
 echo "Need to use sudo for a moment, please. Totally legit."
 sudo chmod go+w /etc/profile
 sudo echo export MSF_DATABASE_CONFIG=/usr/local/share/metasploit-framework/database.yml >> /etc/profile
+sudo chmod go-w /etc/profile
 echo ""
 echo "Done."
 
